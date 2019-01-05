@@ -1,0 +1,16 @@
+﻿<link rel="stylesheet" [href]='sanitizer.bypassSecurityTrustResourceUrl(cssUrl)'>
+<div class="wrapper">
+    <!-- Header Starts -->
+    <div *ngIf="currentUser">
+    <header>
+        <nav class="navbar navbar-expand-lg" >
+        <app-header></app-header>
+        </nav>
+    </header>
+    <section class="progress-steps" *ngIf=" navigation !== 'cancel-confirmation' && navigation !== 'tracking' && navigation !== 'cancel-complete'">
+        <app-progress-steps></app-progress-steps>
+    </section>
+    </div>
+    <alert></alert>
+    <router-outlet></router-outlet>
+</div>

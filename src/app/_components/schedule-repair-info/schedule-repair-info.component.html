@@ -1,0 +1,84 @@
+<section class="main-content">
+        <div class="container-fluid">
+            <h1>Who will the Technician be meeting?</h1>
+            <div class="main-block">
+                <a routerLink="/{{theme}}/issue" class="stage-btn prev" (click)="updateStep()">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 476.737 476.737" style="enable-background:new 0 0 476.737 476.737;" xml:space="preserve" width="512px" height="512px"><g><g><g><path d="M238.369,0C106.726,0,0,106.726,0,238.369c0,131.675,106.726,238.369,238.369,238.369     c131.675,0,238.369-106.694,238.369-238.369C476.737,106.726,370.043,0,238.369,0z M289.221,330.252     c6.198,6.198,6.198,16.273,0,22.47s-16.273,6.198-22.47,0L163.68,249.651c-3.115-3.115-4.64-7.183-4.64-11.283     s1.526-8.168,4.64-11.283L266.75,124.015c6.198-6.198,16.273-6.198,22.47,0c6.198,6.198,6.198,16.273,0,22.47l-91.883,91.883     L289.221,330.252z" fill="#6863fd"/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+
+                </a>
+                
+                <form [formGroup]="infoForm" (ngSubmit)="onSubmit()" >
+                    <div class="form-group px-3">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-12">
+                                <label>Name <span class="required">*</span></label>
+                                <input type="text" formControlName="name" class="form-control" placeholder="Address" [ngClass]="{ 'is-invalid': submitted && formMessage.name.errors }"  />
+                                <div *ngIf="submitted && formMessage.name.errors" class="invalid-feedback">
+                                    <div *ngIf="formMessage.name.errors.required">Name is required</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xs-12">
+                                <label>Preferred Method of Contact <span class="required">*</span></label>
+                                <span class="list-btn">
+                                    <label><input type="radio" value="Text Message" formControlName="contactMethod" [ngClass]="{ 'is-invalid': submitted && formMessage.contactMethod.errors }" > Text Message</label>
+                                </span>
+                                <span class="list-btn">
+                                    <label><input type="radio" value="Phone" formControlName="contactMethod" [ngClass]="{ 'is-invalid': submitted && formMessage.contactMethod.errors }" > Phone</label>
+                                </span>
+                                    
+                                <!-- <select class="form-control" formControlName="contactMethod" [ngClass]="{ 'is-invalid': submitted && formMessage.contactMethod.errors }"  >
+                                    <option value="Text Message">Text Message</option>
+                                    <option value="Phone">Phone</option>
+                                </select> -->
+
+                                <div *ngIf="submitted && formMessage.contactMethod.errors" class="invalid-feedback">
+                                        <div *ngIf="formMessage.contactMethod.errors.required">Method is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Form Group Ends -->	
+                    <div class="form-group px-3">	
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-12">
+                                <label>Mobile Number <span class="required">*</span></label>
+                                <input type="text" formControlName="mobile" class="form-control" placeholder="Mobie Number" [ngClass]="{ 'is-invalid': submitted && formMessage.mobile.errors }"/>
+                                <div *ngIf="submitted && formMessage.mobile.errors" class="invalid-feedback">
+                                    <div *ngIf="formMessage.mobile.errors.required">Mobile is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Form Group Ends -->	
+                 </form>
+                
+
+                <a (click)='onSubmit()' class="stage-btn next">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 476.737 476.737" style="enable-background:new 0 0 476.737 476.737;" xml:space="preserve" width="512px" height="512px"><g><g><g><path d="M238.369,0C106.726,0,0,106.726,0,238.369c0,131.675,106.726,238.369,238.369,238.369     c131.675,0,238.369-106.694,238.369-238.369C476.737,106.726,370.043,0,238.369,0z M289.221,330.252     c6.198,6.198,6.198,16.273,0,22.47s-16.273,6.198-22.47,0L163.68,249.651c-3.115-3.115-4.64-7.183-4.64-11.283     s1.526-8.168,4.64-11.283L266.75,124.015c6.198-6.198,16.273-6.198,22.47,0c6.198,6.198,6.198,16.273,0,22.47l-91.883,91.883     L289.221,330.252z" fill="#6863fd"/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                </a>
+            </div><!-- Main Block Ends -->
+
+            <!-- Aside Starts here -->
+            <aside>
+                <!-- Aside Outer Starts -->
+                <div class="aside-outer" [ngClass]="status ? 'ds-close' : 'ds-open'">
+                    <button class="tg-btn" (click)="toggleClass()"><img src="../assets/images/arrow-down.svg" alt="Down Arrow"></button>
+
+                    <div class="description-outer" [ngClass]="status ? 'hideDiv' : 'showDiv'">
+                        <!-- Mobile Description starts -->
+                        <div class="mobile-description">
+                            <h5>{{details[0].brandName}} {{details[0].deviceName}}</h5>
+                            <ul class="info-list">
+                                <li>{{details[0].issue}}</li>
+                            </ul>
+                        </div>
+                     </div><!-- Description Outer Ends -->
+                    <div class="total">
+                        Service Fee: <span> $ 49.00</span>
+                    </div><!-- total Ends -->
+
+                </div>
+                <!-- Aside Outer Ends -->
+            </aside>
+            <!-- Aside Ends here -->
+
+        </div><!-- Container Ends -->
+    </section><!-- Section Ends -->

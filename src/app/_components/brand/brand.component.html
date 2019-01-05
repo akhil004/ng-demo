@@ -1,0 +1,10 @@
+﻿<section class="main-content">
+    <div class="container-fluid">
+        <h1>Who makes your phone?</h1>
+        <div class="main-block">
+            <ul class="brand">
+                <li *ngFor="let brand of brands"><a (click)="selectBrand(brand.manufacturer)"><img src="../assets/images/{{brand.manufacturer}}.png" alt="{{brand.manufacturer}}"></a></li>
+            </ul>
+        </div><!-- Main Block Ends -->
+    </div><!-- Container Ends -->
+</section><!-- Section Ends -->

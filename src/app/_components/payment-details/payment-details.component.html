@@ -1,0 +1,199 @@
+<section class="main-content">
+  <div class="container-fluid">
+    <h1>What is your payment information?</h1>
+    <div class="main-block">
+      <a routerLink="/{{theme}}/schedule-repair-time" class="stage-btn prev" (click)="updateStep()">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px"
+          y="0px" viewBox="0 0 476.737 476.737" style="enable-background:new 0 0 476.737 476.737;" xml:space="preserve"
+          width="512px" height="512px">
+          <g>
+            <g>
+              <g>
+                <path d="M238.369,0C106.726,0,0,106.726,0,238.369c0,131.675,106.726,238.369,238.369,238.369     c131.675,0,238.369-106.694,238.369-238.369C476.737,106.726,370.043,0,238.369,0z M289.221,330.252     c6.198,6.198,6.198,16.273,0,22.47s-16.273,6.198-22.47,0L163.68,249.651c-3.115-3.115-4.64-7.183-4.64-11.283     s1.526-8.168,4.64-11.283L266.75,124.015c6.198-6.198,16.273-6.198,22.47,0c6.198,6.198,6.198,16.273,0,22.47l-91.883,91.883     L289.221,330.252z"
+                  fill="#6863fd" />
+              </g>
+            </g>
+          </g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+        </svg>
+
+      </a>
+
+      <!-- <form> -->
+
+
+
+
+
+      <form class="card-inner" [formGroup]="paymentForm" (ngSubmit)="onPaymentFormSubmit()" id="ngForm"
+        #documentEditForm="ngForm">
+        <div class="form-group px-3">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+              <label>Card Number <span class="required">*</span></label>
+              <input type="number" class="form-control" formControlName="cardNumber" [(ngModel)]="cardDetailModel.cardNumber"
+                placeholder="Card number" [ngClass]="{'is-invalid': submitted && formMessage.cardNumber.errors }" />
+              <div *ngIf="submitted && formMessage.cardNumber.errors" class="invalid-feedback">
+                <div *ngIf="formMessage.cardNumber.errors.required">Card no is required</div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="row mt-xs-0">
+
+                <div class="col-sm-7 col-xs-12">
+                  <label>Month<span class="required">*</span></label>
+                  <input type="text" class="form-control" placeholder="MM" formControlName="expiryMonth" [(ngModel)]="cardDetailModel.expiryMonth" [ngClass]="{'is-invalid': submitted && formMessage.expiryMonth.errors }"/>
+                  <div *ngIf="submitted && formMessage.expiryMonth.errors" class="invalid-feedback">
+                    <div *ngIf="formMessage.expiryMonth.errors.required">Expiry Month no is required</div>
+                  </div>
+
+                </div>
+                <div class="col-sm-5 col-xs-12">
+                  <label>Year<span class="required">*</span></label>
+                  <input type="text" class="form-control" placeholder="YY" formControlName="expiryYear" [(ngModel)]="cardDetailModel.expiryYear" [ngClass]="{'is-invalid': submitted && formMessage.expiryYear.errors }"/>
+                  <div *ngIf="submitted && formMessage.expiryYear.errors" class="invalid-feedback">
+                    <div *ngIf="formMessage.expiryYear.errors.required">Expiry Year no is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-5 col-xs-12">
+                  <label>CVC <span class="required">*</span></label>
+                  <input type="number" class="form-control" placeholder="CVC" formControlName="cvc" [(ngModel)]="cardDetailModel.cvc" [ngClass]="{'is-invalid': submitted && formMessage.cvc.errors }"/>
+                  <div *ngIf="submitted && formMessage.cvc.errors" class="invalid-feedback">
+                    <div *ngIf="formMessage.cvc.errors.required">CVC no is required</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div><!-- Form Group Ends -->
+        <div class="form-group px-3">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+              <label>Mobile Number <span class="required">*</span></label>
+              <input type="text" class="form-control" placeholder="State" />
+            </div>
+          </div>
+        </div><!-- Form Group Ends -->
+        <div class="form-group px-3">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+              <a routerLink="javascript:;" class="link">Billing Address is the same as the Repair Location</a>
+            </div>
+          </div>
+        </div><!-- Form Group Ends -->
+        <div class="form-group px-3">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+              <label>Billing Address <span class="required">*</span></label>
+              <input type="text" class="form-control" placeholder="Address" />
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <label>City <span class="required">*</span></label>
+              <input type="text" class="form-control" placeholder="Blockbuster" />
+            </div>
+          </div>
+        </div><!-- Form Group Ends -->
+        <div class="form-group px-3">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+              <label>State <span class="required">*</span></label>
+              <input type="text" class="form-control" placeholder="State" />
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <label>Zip Code <span class="required">*</span></label>
+              <input type="text" class="form-control" placeholder="Zip Code" />
+            </div>
+          </div>
+        </div><!-- Form Group Ends -->
+        <button _ngcontent-c5="" class="btn-new primary-btn" form="ngForm" type="submit">
+          <span class="icon"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+          </span>Payment
+        </button>
+      </form>
+      <a class="stage-btn next" (click)="onPaymentFormSubmit()">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px"
+          y="0px" viewBox="0 0 476.737 476.737" style="enable-background:new 0 0 476.737 476.737;" xml:space="preserve"
+          width="512px" height="512px">
+          <g>
+            <g>
+              <g>
+                <path d="M238.369,0C106.726,0,0,106.726,0,238.369c0,131.675,106.726,238.369,238.369,238.369     c131.675,0,238.369-106.694,238.369-238.369C476.737,106.726,370.043,0,238.369,0z M289.221,330.252     c6.198,6.198,6.198,16.273,0,22.47s-16.273,6.198-22.47,0L163.68,249.651c-3.115-3.115-4.64-7.183-4.64-11.283     s1.526-8.168,4.64-11.283L266.75,124.015c6.198-6.198,16.273-6.198,22.47,0c6.198,6.198,6.198,16.273,0,22.47l-91.883,91.883     L289.221,330.252z"
+                  fill="#6863fd" />
+              </g>
+            </g>
+          </g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+        </svg>
+      </a>
+    </div><!-- Main Block Ends -->
+
+    <!-- Aside Starts here -->
+    <aside>
+      <!-- Aside Outer Starts -->
+      <div class="aside-outer" [ngClass]="status ? 'ds-close' : 'ds-open'">
+        <button class="tg-btn" (click)="toggleClass()"><img src="../assets/images/arrow-down.svg" alt="Down Arrow"></button>
+
+        <div class="description-outer" [ngClass]="status ? 'hideDiv' : 'showDiv'">
+          <!-- Mobile Description starts -->
+          <div class="mobile-description">
+            <h5>{{details[0].brandName}} {{details[0].deviceName}}</h5>
+            <ul class="info-list">
+              <li>{{details[0].issue}}</li>
+            </ul>
+          </div>
+          <!-- Mobile Description Ends -->
+
+          <!-- User Description starts -->
+          <div class="user-description">
+
+            <ul class="info-list">
+              <li class="user"> {{details[0].userInfo.name}} </li>
+              <li class="phone"> {{details[0].userInfo.mobile}} </li>
+              <li class="schedule">{{details[0].date}} </li>
+              <li class="address">{{details[0].userAddress.address1}}, <br>{{details[0].userAddress.address2}},
+                {{details[0].userAddress.city}}, <br>{{details[0].userAddress.state}}, {{details[0].userAddress.zip}}</li>
+
+            </ul>
+          </div>
+          <!-- Mobile Description Ends -->
+        </div><!-- Description Outer Ends -->
+        <div class="total">
+          Service Fee: <span> $ 49.00</span>
+        </div><!-- total Ends -->
+
+      </div>
+      <!-- Aside Outer Ends -->
+    </aside>
+    <!-- Aside Ends here -->
+
+  </div><!-- Container Ends -->
+</section><!-- Section Ends -->
